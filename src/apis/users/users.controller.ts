@@ -72,24 +72,6 @@ export class UsersController {
 
   @Public()
   @UseGuards(JwtAuthGuard)
-  @Post('register')
-  async register(@Body() body) {
-    const { email, code } = body;
-    const registerUser = await this.usersService.register(email, code);
-    if (!registerUser.res) {
-      return formatResponse(HTTP_STATUS.BAD_REQUEST, registerUser.message, {
-        error_type: registerUser.error_type,
-      });
-    } else {
-      return formatResponse(HTTP_STATUS.CREATED, registerUser.message, {
-        access_token: this.usersService.generateAccessToken(email),
-        refresh_token: this.usersService.generateRefreshToken(email),
-      });
-    }
-  }
-
-  @Public()
-  @UseGuards(JwtAuthGuard)
   @Post('login')
   async login(@Body() body) {
     const { email, code } = body;
@@ -100,8 +82,8 @@ export class UsersController {
       });
     } else {
       return formatResponse(HTTP_STATUS.OK, loginUser.message, {
-        accessToken: this.usersService.generateAccessToken(email),
-        refreshToken: this.usersService.generateRefreshToken(email),
+        access_token: this.usersService.generateAccessToken(email),
+        refresh_token: this.usersService.generateRefreshToken(email),
       });
     }
   }
@@ -109,7 +91,6 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   @Get('test')
   async test(@Req() request: Request) {
-    console.log(request.user);
     return formatResponse(HTTP_STATUS.OK, 'Test successfully', {
       user: request.user,
     });

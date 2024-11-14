@@ -1,5 +1,6 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { Users } from '../users/users.entities';
+import { Users } from '../apis/users/users.entities';
+import { New } from '../apis/news/news.entities';
 
 export const DB_CONFIG: TypeOrmModuleOptions = {
   type: 'mysql',
@@ -7,15 +8,15 @@ export const DB_CONFIG: TypeOrmModuleOptions = {
   port: 3306,
   username: 'root',
   password: '123456',
-  database: 'accounting-db',
+  database: 'blog_db',
   autoLoadEntities: true,
-  synchronize: true,
-  entities: [Users],
+  synchronize: false,
+  entities: [Users, New],
 };
 
 export const JWT_CONFIG = {
   secret: 'Betty & Lucaus',
-  signOptions: { expiresIn: '60s' },
+  signOptions: { expiresIn: '2d' },
 };
 
 export enum HTTP_STATUS {
