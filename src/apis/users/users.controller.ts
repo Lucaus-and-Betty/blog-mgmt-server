@@ -6,7 +6,7 @@ import {
   SendCodeErrorTypeEnums,
   RefreshTokenErrorTypeEnums,
 } from './users.constants';
-import { Request } from 'express';
+import { type Request } from 'express';
 import { Public } from 'src/decorators/public.decorator';
 import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 import { RefreshJwtAuthGuard } from 'src/guards/refresh-jwt-auth.guard';

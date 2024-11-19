@@ -84,8 +84,8 @@ export class NovelService {
     }
   }
 
-  async updateChapter(id: string, content: string) {
-    const res = await this.novelChapter.update(id, { content });
+  async updateChapter(id: string, content: string, name: string) {
+    const res = await this.novelChapter.update(id, { content, name });
     if (res) {
       return res;
     } else {

@@ -95,8 +95,14 @@ export class NovelController {
 
   @UseGuards(JwtAuthGuard)
   @Post('update-chapter')
-  async updateChapter(@Body() body: { id: string; content: string }) {
-    const res = await this.novelService.updateChapter(body.id, body.content);
+  async updateChapter(
+    @Body() body: { id: string; content: string; name: string },
+  ) {
+    const res = await this.novelService.updateChapter(
+      body.id,
+      body.content,
+      body.name,
+    );
     if (res) {
       return {
         code: HTTP_STATUS.OK,
