@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { UsersModule } from './apis/users/users.module';
 import { NewsModule } from './apis/news/news.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DB_CONFIG } from './constants';
+import { DB_CONFIG } from './db.config';
 import { ProjectModule } from './apis/project/project.module';
 import { LoveModule } from './apis/love/love.module';
 import { NovelModule } from './apis/novel/novel.module';
