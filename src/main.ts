@@ -5,11 +5,19 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('v1');
   app.enableCors({
-    origin: [
-      'http://localhost:5174',
-      'http://116.196.66.106:8081',
-      'http://116.196.66.106:8082',
-    ],
+    origin: (origin, callback) => {
+      if (
+        [
+          'http://localhost:5174',
+          'http://116.196.66.106:8081',
+          'http://116.196.66.106:8082',
+        ].includes(origin)
+      ) {
+        callback(null, true); // 允许跨域
+      } else {
+        callback(new Error('Not allowed by CORS')); // 拒绝跨域
+      }
+    },
     methods: 'GET,POST',
     allowedHeaders: 'Content-Type, Accept, Authorization, x-requested-with',
   });
