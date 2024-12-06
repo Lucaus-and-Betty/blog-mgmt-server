@@ -16,7 +16,7 @@ async function bootstrap() {
       ) {
         callback(null, true); // 允许跨域
       } else {
-        callback(new Error('Not allowed by CORS')); // 拒绝跨域
+        callback(null, false);
       }
     },
     methods: 'GET,POST',
