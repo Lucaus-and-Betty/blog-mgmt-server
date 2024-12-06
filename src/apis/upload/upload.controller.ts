@@ -44,9 +44,9 @@ export class UploadController {
   async deleteFile(@Body() body: { fileName: string }) {
     const { fileName } = body;
     // 删除文件
-    fs.unlinkSync(`/Users/betty/my-projects/blog-imgs/${fileName}`);
+    fs.unlinkSync(`/root/server/blog-imgs/${fileName}`);
     // 检查文件是否存在
-    if (fs.existsSync(`/Users/betty/my-projects/blog-imgs/${fileName}`)) {
+    if (fs.existsSync(`/root/server/blog-imgs/${fileName}`)) {
       return {
         code: HTTP_STATUS.BAD_REQUEST,
         message: 'error',
