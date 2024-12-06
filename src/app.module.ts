@@ -15,7 +15,8 @@ import { join } from 'path';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join('/Users/betty/my-projects/blog-imgs'),
+      // rootPath: join('/Users/betty/my-projects/blog-imgs'),
+      rootPath: join('/root/server/blog-imgs'),
       serveRoot: '/static',
     }),
     UsersModule,
