@@ -6,6 +6,7 @@ async function bootstrap() {
   app.setGlobalPrefix('v1');
   app.enableCors({
     origin: (origin, callback) => {
+      console.log(origin);
       if (
         [
           'http://localhost:5174',
