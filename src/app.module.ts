@@ -12,11 +12,14 @@ import { UploadModule } from './apis/upload/upload.module';
 import { LabelModule } from './apis/label/label.module';
 import { ArticlesModule } from './apis/articles/articles.module';
 import { join } from 'path';
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+
+dotenv.config({ path: path.join(__dirname, '../.env') });
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      // rootPath: join('/Users/betty/my-projects/blog-imgs'),
-      rootPath: join('/root/server/blog-imgs'),
+      rootPath: join(process.env.NODE_ENV_STATIC_URL),
       serveRoot: '/static',
     }),
     UsersModule,
